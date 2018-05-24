@@ -1,0 +1,73 @@
+			Usuarios y contraseñas:
+- bandit0: bandit0
+- bandit1: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+- bandit2: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+- bandit3: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+- bandit4: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+- bandit5: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+- bandit6: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+- bandit7: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+			Tutorial:
+
+Nivel 0:
+1. Para comenzar el juego, utilizar este comando:
+	ssh bandit.labs.overthewire.org -l bandit0 -p 2220
+   Y hay que usar la contraseña brindada: "bandit0"
+
+Nivel 0 - Nivel 1:
+1. Hay que buscar el archivo readme y leer lo que dice dentro. Se puede usar el comando "cat readme" y podremos ver su contenido. El contenido es la contraseña para ir al siguiente nivel.
+	Contraseña: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+2. Cerrar sesión ssh con el comando "logout".
+
+Nivel 1 - Nivel 2:
+1. Iniciar sesión con el bandit1:
+	ssh bandit.labs.overthewire.org -l bandit1 -p 2220
+2. Hay que leer el único archivo que hay en el directorio. Se lo puede hacer usando este comando: "cat ./-"
+	contraseña: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+3. Cerrar sesión ssh con el comando "logout".
+
+Nivel 2 - Nivel 3:
+1. Iniciar sesión con el bandit2:
+	ssh bandit.labs.overthewire.org -l bandit2 -p 2220
+2. Usar comando "cat "spaces in this filename"" para obtener la contraseña.
+	contraseña: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+3. Cerrar sesión ssh con el comando "logout".
+
+Nivel 3 - Nivel 4:
+1. Iniciar sesión con el bandit3:
+	ssh bandit.labs.overthewire.org -l bandit3 -p 2220
+2. Ir al directorio inhere: "cd inhere"
+3. Leer el contenido del archivo oculto: "cat .hidden"
+	contraseña: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+3. Cerrar sesión ssh con el comando "logout".
+
+Nivel 4 - Nivel 5:
+1. Iniciar sesión con el bandit4:
+	ssh bandit.labs.overthewire.org -l bandit4 -p 2220
+2. Ir al directorio inhere: "cd inhere"
+3. Usando el comando: "file ./-*" veremos que el único archivo con ASCII text es el -file07.
+4. Usando "cat ./-file07" podremos ver la contraseña:
+	contraseña: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+5. Cerrar sesión ssh con el comando "logout".
+
+Nivel 5 - Nivel 6:
+1. Iniciar sesión con el bandit5:
+	ssh bandit.labs.overthewire.org -l bandit5 -p 2220
+2. Ir al directorio inhere: "cd inhere"
+3. Utilizaremos el comando: "find ./ -type f -readable -not -executable -size 1033c" para obtener el archivo que debemos encontrar.
+4. Usando "cat ./maybehere07/.file2" encontraremos la contraseña.
+	contraseña: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+5. Logout
+
+
+Nivel 6 - Nivel 7:
+1. Iniciar sesión con el bandit6:
+	ssh bandit.labs.overthewire.org -l bandit5 -p 2220
+2. Usar el comando "find / -user bandit7 -group bandit6 -size 33c" para encontrar todas las coincidencias.
+3. Si buscamos entre los resultados, encontraremos un archivo en este directorio: "/var/lib/dpkg/info/bandit7.password"
+4. Usando "cat /var/lib/dpkg/info/bandit7.password" obtendremos la contraseña:
+	contraseña: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+5.logout
+
+Nivel 7 - Nivel 8:
