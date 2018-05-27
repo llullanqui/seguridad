@@ -81,10 +81,16 @@ Nivel 7 - Nivel 8:
 
 Nivel 8 - Nivel 9:
 1. Iniciar sesión con el bandit8:
-	ssh bandit.labs.overthewire.org -l bandit7 -p 2220
+	ssh bandit.labs.overthewire.org -l bandit8 -p 2220
 2. Usamos el comando "sort data.txt | uniq -u" para encontrar la contraseña. Esto se debe a que el comando "uniq -u" solo remueve las coincidencias que son adyacentes. Si lo combinamos con sort, nos permite eliminar todos los que se repiten.
 	contraseña: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 3.logout
 
 Nivel 9 - Nivel 10:
+1. Iniciar sesión con el bandit9:
+	ssh bandit.labs.overthewire.org -l bandit9 -p 2220
+2. Utilizaremos el comando "strings data.txt | grep -E ^"="\+" para encontrar la contraseña. Dentro del grep: El ^ nos permite buscar las líneas que comienzan con una cadena, el \+ nos permite buscar cadenas que tengan de una o más coincidencias juntas, y el -E nos permite buscar el patrón como una expresión extendida regular. El comando strings filtra todos los que son humanamente legibles. Al ejecutar nos encontraremos con 4 posibilidades, pero la única que parece una contraseña es esta:  
+	contraseña: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+3.logout
 
+Nivel 10 - Nivel 11:
