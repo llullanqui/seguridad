@@ -7,6 +7,8 @@
 - bandit5: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 - bandit6: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 - bandit7: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+- bandit8: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+- bandit9: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 
 			Tutorial:
 
@@ -78,4 +80,11 @@ Nivel 7 - Nivel 8:
 3.logout
 
 Nivel 8 - Nivel 9:
+1. Iniciar sesión con el bandit8:
+	ssh bandit.labs.overthewire.org -l bandit7 -p 2220
+2. Usamos el comando "sort data.txt | uniq -u" para encontrar la contraseña. Esto se debe a que el comando "uniq -u" solo remueve las coincidencias que son adyacentes. Si lo combinamos con sort, nos permite eliminar todos los que se repiten.
+	contraseña: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+3.logout
+
+Nivel 9 - Nivel 10:
 
