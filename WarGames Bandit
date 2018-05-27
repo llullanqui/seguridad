@@ -9,6 +9,9 @@
 - bandit7: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 - bandit8: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 - bandit9: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+- bandit10: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+- bandit11: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+- bandit12: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 			Tutorial:
 
@@ -101,4 +104,10 @@ Nivel 10 - Nivel 11:
 3. logout
 
 Nivel 11 - Nivel 12:
- 
+1. Iniciar sesión con el bandit11:
+	ssh bandit.labs.overthewire.org -l bandit11 -p 2220
+2. Usamos el comando "cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'" para desencriptar el mensaje en el archivo data.txt. Así obtenemos:
+	contraseña: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+3. logout
+
+Nivel 12 - Nivel 13:
