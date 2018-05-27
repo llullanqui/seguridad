@@ -94,3 +94,11 @@ Nivel 9 - Nivel 10:
 3.logout
 
 Nivel 10 - Nivel 11:
+1. Iniciar sesión con el bandit10:
+	ssh bandit.labs.overthewire.org -l bandit10 -p 2220
+2. Usamos el comando "base64 -d data.txt" para decodificar lo contenido en el archivo data.txt, y obtendremos:
+	contraseña: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+3. logout
+
+Nivel 11 - Nivel 12:
+ 
