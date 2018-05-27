@@ -12,6 +12,8 @@
 - bandit10: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 - bandit11: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 - bandit12: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+- bandit13: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
 
 			Tutorial:
 
@@ -111,3 +113,19 @@ Nivel 11 - Nivel 12:
 3. logout
 
 Nivel 12 - Nivel 13:
+1. Iniciar sesion con el bandit12:
+	ssh bandit.labs.overthewire.org -l bandit12 -p 2220
+2. Primero tendremos un archivo hexdump el cual lo tendremos que revertir usando el siguiente comando: "xxd -r data.txt >resultado". Esto creará un archivo llamado resultado.
+3. Al revisar el tipo de archivo que es "resultado", nos damos cuenta que es una compresión de gzip, el cual descomprimiremos usando el siguiente comando: "zcat resultado >resultado1"; llevando el resultado a otro archivo.
+4. Este "resultado1" es una compresión de bzip2, la cual descomprimiremos con: "bzcat resultado1 >resultado2"
+5. "resultado2" es una compresión de gzip, por lo que usaremos a zcat: "zcat resultado2 >resultado3"
+6. resultado3 es un archivo comprimido tar, por lo que tendremos que usar "tar -xvf resultado3". -x sirve para extraer, -f sirve para especificar el archivo, y -v para imprimir el nombre del archivo descompreso.
+7. Repetiremos el sexto paso, pero ahora con el archivo "data5.bin" obtenido.
+8. El archivo "data6.bin" obtenido es una compresión de bzip2, por lo que lo descomprimiremos usando este comando: "bzcat data6.bin >resultado4"
+9. Repetiremos el sexto paso, pero ahora con el archivo "resultado4".
+10. Usaremos el comando "zcat data8.bin >resultado5".
+11. Ahora leeremos el archivo resultado5, y habremos obtenido nuestra contraseña
+	contraseña: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+12. logout
+
+Nivel 13 - Nivel 14:
