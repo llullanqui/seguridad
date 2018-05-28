@@ -18,6 +18,7 @@
 - bandit16: cluFn7wTiGryunymYOu4RcffSxQluehd
 - bandit17: xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
 - bandit18: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+- bandit19: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 
 			Tutorial:
@@ -187,4 +188,13 @@ Nivel 17 - Nivel 18:
 1. Usando el comando "diff passwords.new passwords.old", podremos ver las líneas que son distintas entre ambos archivos. La de arriba será la que pertenece a passwords.new, por ende es nuestra contraseña:
 	contraseña: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 2. logoutx2
+
+Nivel 18 - Nivel 19:
+1. Podemos usar el comando para iniciar sesión para poder leer el archivo readme, sin necesidad de ingresar en el bandit18.
+	"ssh bandit.labs.overthewire.org -l bandit18 -p 2220 cat readme"
+2. Obtendremos la contraseña siguiente.
+	contraseña: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+Nivel 19 - Nivel 20:
+
 
