@@ -13,6 +13,8 @@
 - bandit11: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 - bandit12: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 - bandit13: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+- bandit14: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+- bandit15: BfMYroe26WYalil77FoDi9qh59eK5xNr
 
 
 			Tutorial:
@@ -129,3 +131,34 @@ Nivel 12 - Nivel 13:
 12. logout
 
 Nivel 13 - Nivel 14:
+1. Iniciar sesion con el bandit13:
+	ssh bandit.labs.overthewire.org -l bandit13 -p 2220
+2. Si revisamos los archivos iniciales con "ls", veremos un archivo llave.
+3. Usaremos el archivo llave para iniciar sesión en el bandit 14, usando el comando: "ssh -i sshkey.private bandit14@localhost"
+4. Escribiremos yes cuando se nos solicite.
+5. Luego, para obtener la contraseña del bandit 14, necesitaremos visualizarla con el comando "cat /etc/bandit_pass/bandit14"
+	contraseña: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+Nivel 14 - Nivel 15:
+1. Necesitaremos utilizar el comando "telnet localhost 30000"
+2. Colocaremos la contraseña en el espacio en blanco
+3. Obtendremos la contraseña para el siguiente bandit
+	contraseña: BfMYroe26WYalil77FoDi9qh59eK5xNr
+4. Logout x2
+
+Nivel 15 - Nivel 16:
+1. Iniciar sesión con el bandit 15:
+	ssh bandit.labs.overthewire.org -l bandit15 -p 2220
+---------------------Opción A---------------------
+2. Utilizar el siguiente comando: openssl s_client -connect localhost:30001
+3. Ingresar la contraseña del bandit 15 cuando se lo permita.
+---------------------Opción B (Por si la A muestra un mensaje de HEARTBEATING y read R BLOCK---------------------
+2. Utilizar el siguiente comando: openssl s_client -quiet -connect localhost:30001
+3. Ingresar la contraseña del bandit 15 cuando se lo permita.
+--------------------------------------------------
+4. Obtendremos la contraseña del siguiente bandit:
+	contraseña: cluFn7wTiGryunymYOu4RcffSxQluehd
+5. logout
+
+
+
