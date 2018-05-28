@@ -15,6 +15,9 @@
 - bandit13: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 - bandit14: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 - bandit15: BfMYroe26WYalil77FoDi9qh59eK5xNr
+- bandit16: cluFn7wTiGryunymYOu4RcffSxQluehd
+- bandit17: xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+- bandit18: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 
 
 			Tutorial:
@@ -161,5 +164,27 @@ Nivel 15 - Nivel 16:
 5. logout
 
 Nivel 16 - Nivel 17:
+1. Iniciar sesión con el bandit 16:
+	ssh bandit.labs.overthewire.org -l bandit16 -p 2220
+2. Utilizando el comando "nmap -p 31000-32000 localhost" obtendremos un listado de varios puertos abiertos:
+		Not shown: 996 closed ports
+		PORT      STATE SERVICE
+		31046/tcp open  unknown
+		31518/tcp open  unknown
+		31691/tcp open  unknown
+		31790/tcp open  unknown
+		31960/tcp open  unknown
+3. Probando uno por uno, utilizando el siguiente comando: "openssl s_client -connect localhost:<puerto>", veremos que el único puerto el cual nos sirve es el 31790. Nos conectaremos con este puerto con el siguiente comando:
+	"openssl s_client -connect localhost:<31790>"
+4. Cuando haya un espacio en blanco, colocaremos la contraseña del bandit16 y nos dará el texto de una private key.
+5. Cogeremos el texto y lo agregaremos a un archivo llamado "sshkey.private".
+6. Utilizaremos el siguiente comando para ingresar al bandit17:
+	"ssh -i sshkey.private bandit17@localhost"
+7. Podemos obtener la clave del bandit17 con el siguiente comando: "cat /etc/bandit_pass/bandit17"
+	contraseña: xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
 
+Nivel 17 - Nivel 18:
+1. Usando el comando "diff passwords.new passwords.old", podremos ver las líneas que son distintas entre ambos archivos. La de arriba será la que pertenece a passwords.new, por ende es nuestra contraseña:
+	contraseña: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+2. logoutx2
 
