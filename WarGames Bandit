@@ -196,5 +196,82 @@ Nivel 18 - Nivel 19:
 	contraseña: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 Nivel 19 - Nivel 20:
+1. Iniciar sesión con el bandit 19:
+	ssh bandit.labs.overthewire.org -l bandit19 -p 2220
+2. Vemos que archivos se encuentran con el comando "ls"
+	bandit20-do
+3. Abrimos el archivo con el comando "./bandit20-do".
+	Run a command as another user.
+	Example: ./bandit20-do id
+4. Nos pide ejecutar con el comando "./bandit20-do id".
+	uid=11019(bandit19) gid=11019(bandit19) euid=11020(bandit20) groups=11019(bandit19)
+5. Usamos el comando "./bandit20-do whoami".
+	bandit20
+6. Leemos el archivo donde está la contraseña "./bandit20-do cat /etc/bandit_pass/bandit20".
+	contraseña: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+7. Logout
 
+Nivel 20 - Nivel 21:
+1. Iniciar sesión con el bandit 20:
+	ssh bandit.labs.overthewire.org -l bandit20 -p 2220
+2. Vemos que archivos se encuentran con el comando "ls".
+	suconnect
+3. Abrimos el archivo con el comando "./suconnect".
+	Usage: ./suconnect <portnumber>
+	This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+4. Utilizamos netcat para poder recibir la contraseña con el comando "nc -l 5220" y en otra terminal iniciamos sesión en el bandit y ejecutamos "./suconnect 5220" con el mismo puerto.	
+5. En la terminal del netcat pegamos la contraseña del bandit 20 "GbKksEFF4yrVs6il55v6gwY5aVje5f0j". Si es correcta, nos dará la contraseña del siguiente nivel y en la otra terminal indicará que la contraseña es correcta.
+	Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+	Password matches, sending next password
+	
+	contraseña: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+7. Logout
 
+Nivel 21 - Nivel 22:
+1. Iniciar sesión con el bandit 21:
+	ssh bandit.labs.overthewire.org -l bandit21 -p 2220
+2. Ejecutamos la instrucción que nos menciona OverTheWire "cd /etc/cron.d/".
+3. Ejecutmos "ls -la" para ver el contenido.
+	total 28
+	drwxr-xr-x   2 root root 4096 Dec 28 14:34 .
+	drwxr-xr-x 100 root root 4096 Mar 12 09:51 ..
+	-rw-r--r--   1 root root  102 Apr  5  2016 .placeholder
+	-rw-r--r--   1 root root  120 Dec 28 14:34 cronjob_bandit22
+	-rw-r--r--   1 root root  122 Dec 28 14:34 cronjob_bandit23
+	-rw-r--r--   1 root root  120 Dec 28 14:34 cronjob_bandit24
+	-rw-r--r--   1 root root  190 Oct 31  2017 popularity-contest
+4. Leemos el archivo del bandit siguiente "cat cronjob_bandit22".
+	@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+	* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+5. Leemos el archivo que nos apareció "cat /usr/bin/cronjob_bandit22.sh".
+	#!/bin/bash
+	chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+	cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+6. Leemos el archivo que nos indica "cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv".
+	contraseña: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+7. Logout
+
+Nivel 22 - Nivel 23:
+1. Iniciar sesión con el bandit 22:
+	ssh bandit.labs.overthewire.org -l bandit22 -p 2220
+2. Ejecutamos la instrucción que nos menciona OverTheWire "cd /etc/cron.d/".
+3. Ejecutmos "ls" para ver el contenido.
+	cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  popularity-contest
+4. Leemos el archivo del bandit siguiente "cat cronjob_bandit23"
+	@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+	* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+5. Leemos el archivo que nos indica "cat /usr/bin/cronjob_bandit23.sh"
+	#!/bin/bash
+
+	myname=$(whoami)
+	mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+	echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+	cat /etc/bandit_pass/$myname > /tmp/$mytarget
+6. Leer el archivo target "echo I am user bandit23 | md5sum | cut -d ' ' -f 1"
+	8ca319486bfbbc3663ea0fbe81326349
+7. Leemos el archivo "cat /tmp/8ca319486bfbbc3663ea0fbe81326349"
+	contraseña: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+8. Logout
+	
